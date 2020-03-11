@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedPark.Catalog", "MedPark.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedPark.Common", "MedPark.Common\src\MedPark.Common.csproj", "{BE9847F2-F7C5-49FA-90D9-0162BC60C182}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedPark.EmailTemplates", "MedPark.Common.Email\src\MedPark.EmailTemplates.csproj", "{3CBE4AF5-4A12-436E-8362-31E75CB723E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedPark.Common.Email", "MedPark.Common.Email\src\MedPark.Common.Email.csproj", "{3CBE4AF5-4A12-436E-8362-31E75CB723E8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedPark.CustomersService", "MedPark.Customers\src\MedPark.CustomersService.csproj", "{BBEEA9A6-CB92-432E-A7AD-40B07E74A92B}"
 EndProject

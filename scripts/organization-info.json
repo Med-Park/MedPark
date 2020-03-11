@@ -1,9 +1,6 @@
 {
   "repos": [
 	{
-	  "name": "MedPark"
-	},
-	{
 	  "name": "MedPark.API.Gateway"
 	},
 	{

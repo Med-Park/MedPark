@@ -1,0 +1,46 @@
+{
+  "repos": [
+	{
+	  "name": "MedPark.API.Gateway"
+	},
+	{
+	  "name": "MedPark.Basket"
+	},
+	{
+	  "name": "MedPark.Bookings"
+	},
+	{
+	  "name": "MedPark.Catalog"
+	},
+	{
+	  "name": "MedPark.Common"
+	},
+	{
+	  "name": "MedPark.Customers"
+	},
+	{
+	  "name": "MedPark.Common.Email"
+	},
+	{
+	  "name": "MedPark.Identity"
+	},
+	{
+	  "name": "MedPark.MedicalPractice"
+	},
+	{
+	  "name": "MedPark.Notifications"
+	},
+	{
+	  "name": "MedPark.Orders"
+	},
+	{
+	  "name": "MedPark.Payments"
+	},
+	{
+	  "name": "MedPark.Web"
+	},
+	{
+	  "name": "MedPark.Serverless"
+	}
+  ]
+}

@@ -1,0 +1,81 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+- dev
+- master
+- feature/*
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  project: 'src/MedPark.Common/MedPark.Common.csproj'
+  packageVersion: 0
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: UseDotNet@2
+  displayName: 'Set pipeline to use DotNet Core 3.1'
+  inputs:
+    version: '3.1.x'
+    includePreviewVersions: false
+  enabled: true
+
+- task: NuGetCommand@2
+  displayName: 'Restore Nuget packages'
+  inputs:
+    restoreSolution: '$(project)'
+  enabled: true
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build Library'
+  inputs:
+    command: 'build'
+    projects: '$(project)'
+    arguments: '-c Release'
+  enabled: true
+
+- task: NuGetAuthenticate@0
+  displayName: 'Authenticate with Nuget'
+  inputs:
+    nuGetServiceConnections: 'MedParkNuGetFeed'
+  enabled: false
+
+- task: NugetVersionUpdater@1
+  inputs:
+    maxIncrement: 10
+    packageName: "MedPark.Common"
+    pipelineVariable: 'packageVersion'
+
+- task: NuGetCommand@2
+  displayName: 'Package Library to publish to NuGet'
+  inputs:
+    command: pack
+    packagesToPack: '$(project)'
+    versioningScheme: byEnvVar
+    versionEnvVar: 'packageVersion'
+  enabled: true
+
+- task: DotNetCoreCLI@2
+  displayName: Publish Library to NuGet feed (Only if the build was triggered by master branch)
+  inputs:
+    command: custom
+    custom: nuget
+    arguments: >
+      push $(Build.ArtifactStagingDirectory)/MedPark.Common.$(packageVersion).nupkg
+      -s $(NugetFeedUrl)
+      -k $(NugetMedParkAPIKey)
+  enabled: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifcats'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

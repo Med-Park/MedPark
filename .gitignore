@@ -1,0 +1,15 @@
+MedPark.API.Gateway
+MedPark.Basket
+MedPark.Bookings
+MedPark.Catalog
+MedPark.Common.Email
+MedPark.Common
+MedPark.Customers
+MedPark.Identity
+MedPark.MedicalPractice
+MedPark.Notifications
+MedPark.Orders
+MedPark.Payments
+MedPark.Serverless
+MedPark.Web
+MedPark

@@ -1,0 +1,132 @@
+version: "3.5"
+
+services:
+
+  # rabbitmq:
+    # image: rabbitmq:3-management
+    # container_name: rabbitmq
+    # ports:
+      # - 5672:5672
+      # - 15672:15672
+    # networks:
+      # - medpark
+    # volumes: 
+      # - rabbitmq:/var/lib/rabbitmq
+      
+  medpark-api:
+    image: medpark-api
+    build:
+      dockerfile: Dockerfile.multistage
+      context: ../MedPark.API.Gateway/src
+    ports:
+     - 8000:5000
+    # depends_on:
+      # - rabbitmq
+    networks:
+      - medpark
+      
+  medpark-customers:
+    image: medpark-customers
+    build:
+      dockerfile: Dockerfile.multistage
+      context: ../MedPark.Customers/src
+    ports:
+      - 8001:5001
+    # depends_on:
+      # - medpark-api
+    networks:
+      - medpark
+      
+  medpark-practice:
+    image: medpark-practice
+    build:
+      dockerfile: Dockerfile.multistage
+      context: ../MedPark.MedicalPractice/src
+    ports:
+      - 8002:5002
+    # depends_on:
+      # - medpark-api
+    networks:
+      - medpark
+      
+  medpark-bookings:
+    image: medpark-bookings
+    build:
+      dockerfile: Dockerfile.multistage
+      context: ../MedPark.Bookings/src
+    ports:
+      - 8003:5003
+    # depends_on:
+      # - medpark-api
+    networks:
+      - medpark
+      
+  medpark-catalog:
+    image: medpark-catalog
+    build:
+      dockerfile: Dockerfile.multistage
+      context: ../MedPark.Catalog/src
+    ports:
+      - 8004:5004
+    # depends_on:
+      # - medpark-api
+    networks:
+      - medpark
+      
+  medpark-order:
+    image: medpark-order
+    build:
+      dockerfile: Dockerfile.multistage
+      context: ../MedPark.Orders/src
+    ports:
+      - 8005:5005
+    # depends_on:
+      # - medpark-api
+    networks:
+      - medpark
+      
+  medpark-basket:
+    image: medpark-basket
+    build:
+      dockerfile: Dockerfile.multistage
+      context: ../MedPark.Basket/src
+    ports:
+      - 8006:5006
+    # depends_on:
+      # - medpark-api
+    networks:
+      - medpark
+      
+  medpark-payment:
+    image: medpark-payment
+    build:
+      dockerfile: Dockerfile.multistage
+      context: ../MedPark.Payments/src
+    ports:
+      - 8007:5007
+    # depends_on:
+      # - medpark-api
+    networks:
+      - medpark
+      
+  medpark-identity:
+    image: medpark-identity
+    build:
+      dockerfile: Dockerfile.multistage
+      context: ../MedPark.Identity/src
+    ports:
+      - 8008:5008
+    # depends_on:
+      # - medpark-api
+    networks:
+      - medpark
+      
+
+networks:
+  medpark:
+    name: medpark-network
+    external: true
+
+# volumes:
+  # rabbitmq:
+    # driver: local

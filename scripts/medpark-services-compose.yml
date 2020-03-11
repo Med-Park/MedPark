@@ -77,7 +77,7 @@ services:
     image: medpark-order
     build:
       dockerfile: Dockerfile.multistage
-      context: ../MedPark.OrderService/src
+      context: ../MedPark.Orders/src
     ports:
       - 8005:5005
     # depends_on:
@@ -101,7 +101,7 @@ services:
     image: medpark-payment
     build:
       dockerfile: Dockerfile.multistage
-      context: ../MedPark.Payment/src
+      context: ../MedPark.Payments/src
     ports:
       - 8007:5007
     # depends_on:

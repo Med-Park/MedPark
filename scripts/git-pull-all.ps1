@@ -5,18 +5,17 @@ Set-Location ..
 
 $orgURL = "https://github.com/Med-Park/"
 
-$repoPath = Get-Location
+$orgRepoPath = Get-Location
 
 foreach($repo in $repos.repos){
 
-    $repoPath = $repoPath.ToString() + "/" + $repo.Name
+    $repoPath = $orgRepoPath.ToString() + "/" + $repo.Name
+    Set-Location $repoPath 
 
     Write-Host
     Write-Host ========================================================
     Write-Host Updating repository: $repo.Name
     Write-Host ========================================================
-
-    Set-Location $repoPath
 
     git checkout dev
     git pull
@@ -24,7 +23,6 @@ foreach($repo in $repos.repos){
     git pull
     git checkout dev
     
-    $repoPath = Get-Location
     Set-Location ..
 }
 

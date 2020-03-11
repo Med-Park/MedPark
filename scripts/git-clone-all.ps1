@@ -19,14 +19,18 @@ foreach($repo in $repos.repos){
         Write-Host ======================================================== 
     }
     else{
-        $repoURL = $orgURL + $repo.Name + ".git"
 
-        Write-Host
-        Write-Host ========================================================
-        Write-Host Cloning repository: $repo.Name
-        Write-Host ========================================================
+        if($repo.Name -ne "MedPark"){
+
+            $repoURL = $orgURL + $repo.Name + ".git"
     
-        git clone $repoURL
+            Write-Host
+            Write-Host ========================================================
+            Write-Host Cloning repository: $repo.Name
+            Write-Host ========================================================
+        
+            git clone $repoURL
+        }
     }
 }
 

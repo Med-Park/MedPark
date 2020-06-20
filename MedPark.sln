@@ -35,7 +35,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{59
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{57016245-0F64-4B9B-B357-44F7169C4232}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedPark.Basket.Tests", "MedPark.Basket\Tests\MedPark.Basket.Tests\MedPark.Basket.Tests.csproj", "{8248E5F3-21A6-4001-8513-3B1B513FD1C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedPark.Basket.Tests", "MedPark.Basket\Tests\MedPark.Basket.Tests\MedPark.Basket.Tests.csproj", "{8248E5F3-21A6-4001-8513-3B1B513FD1C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -53,9 +53,18 @@ services:
       - 5340:80
     networks:
       - medpark
-    # network_mode: host
     volumes: 
       - seq:/data
+      
+  consul:
+    image: consul
+    container_name: consul
+    ports:
+      - 8500:8500
+    networks:
+      - medpark
+    volumes:
+      - consul:/consul/data
 
 networks:
   medpark:
@@ -67,4 +76,6 @@ volumes:
   mongo:
     driver: local
   seq:
+    driver: local
+  consul:
     driver: local

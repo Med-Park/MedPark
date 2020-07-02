@@ -18,33 +18,20 @@ contains a summary ot tools and services used to build the solution.
 ### MedPark Contents
 Below is a list off all the services, libraries and serverless functions that make MedPark run.
 
-[API Service](https://github.com/Med-Park/MedPark.API.Gateway)
-
-[Basket Service](https://github.com/Med-Park/MedPark.Basket)
-
-[Booking Service](https://github.com/Med-Park/MedPark.Bookings)
-
-[Catalog Service](https://github.com/Med-Park/MedPark.Catalog)
-
-[Customer Service](https://github.com/Med-Park/MedPark.Customers)
-
-[Identity Service](https://github.com/Med-Park/MedPark.Identity)
-
-[Medical Practice Service](https://github.com/Med-Park/MedPark.MedicalPractice)
-
-[Notification Service](https://github.com/Med-Park/MedPark.Notifications)
-
-[Ordering Service](https://github.com/Med-Park/MedPark.Orders)
-
-[Payment Service](https://github.com/Med-Park/MedPark.Payments)
-
-[Frontend Web App](https://github.com/Med-Park/MedPark.Web)
-
-[MedPark Common Library](https://github.com/Med-Park/MedPark.Common)
-
-[Email Common Library](https://github.com/Med-Park/MedPark.Common.Email)
-
-[Azure Functions](https://github.com/Med-Park/MedPark.Serverless)
+- [API Service](https://github.com/Med-Park/MedPark.API.Gateway)
+- [Basket Service](https://github.com/Med-Park/MedPark.Basket)
+- [Booking Service](https://github.com/Med-Park/MedPark.Bookings)
+- [Catalog Service](https://github.com/Med-Park/MedPark.Catalog)
+- [Customer Service](https://github.com/Med-Park/MedPark.Customers)
+- [Identity Service](https://github.com/Med-Park/MedPark.Identity)
+- [Medical Practice Service](https://github.com/Med-Park/MedPark.MedicalPractice)
+- [Notification Service](https://github.com/Med-Park/MedPark.Notifications)
+- [Ordering Service](https://github.com/Med-Park/MedPark.Orders)
+- [Payment Service](https://github.com/Med-Park/MedPark.Payments)
+- [Frontend Web App](https://github.com/Med-Park/MedPark.Web)
+- [MedPark Common Library](https://github.com/Med-Park/MedPark.Common)
+- [Email Common Library](https://github.com/Med-Park/MedPark.Common.Email)
+- [Azure Functions](https://github.com/Med-Park/MedPark.Serverless)
 
 ### How to get started
 To get started, you can clone this repo and then run the `/scripts/git-clone-all.ps1` Powershell script. This script will clone all the MedPark repositries listed above.

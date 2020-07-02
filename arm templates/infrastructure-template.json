@@ -1,35 +1,91 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "medpark_free_service_plan": {
-            "defaultValue": "medpark-free-service-plan",
+        "MedPark-vNet-Name": {
             "type": "string"
+        },
+        "MedPark-Key-Vault-Name": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for all resources."
+            }
+        },
+        "TenantId": {
+            "type": "string",
+            "defaultValue": "[subscription().tenantId]",
+            "metadata": {
+                "description": "Tenant ID for resources."
+            }
+        },
+        "Vault-ObjectId": {
+            "type": "string"
+        },
+        "Key-Valut-Permission-Keys": {
+            "type": "array"
+        },
+         "Key-Valut-Permission-Secrets": {
+            "type": "array"
         }
     },
     "variables": {},
     "resources": [
         {
-            "type": "Microsoft.Web/serverfarms",
-            "apiVersion": "2018-02-01",
-            "name": "[parameters('medpark_free_service_plan')]",
-            "location": "UK South",
-            "sku": {
-                "name": "F1",
-                "tier": "Free",
-                "size": "F1",
-                "family": "F",
-                "capacity": 1
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('MedPark-vNet-Name')]",
+            "comments": "Virtual network for MedPark services",
+            "location": "[parameters('location')]",
+            "properties":{
+                "addressSpace": {
+                    "addressPrefixes":[
+                        "10.0.0.0/16"
+                    ]
+                },
+                "subnets":[
+                    { 
+                        "name":"default",
+                        "properties": {
+                            "addressPrefix": "10.0.0.0/24"
+                        }
+                    }
+                ],
+                "enableDdosProtection": false
             },
-            "kind": "linux",
+            "tags": {
+                "Department":"Dev"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2016-10-01",
+            "comments": "Key Vault for MedPark",
+            "location":"[parameters('location')]",
+            "name": "[parameters('MedPark-Key-Vault-Name')]",
             "properties": {
-                "perSiteScaling": false,
-                "isSpot": false,
-                "reserved": true,
-                "isXenon": false,
-                "hyperV": false,
-                "targetWorkerCount": 0,
-                "targetWorkerSizeId": 0
+                "enableSoftDelete": true,
+                "sku": {
+                    "family": "A",
+                    "name": "standard"
+                },
+                "tenantId": "[parameters('TenantId')]",
+                "accessPolicies": [
+                    {
+                        "tenantId": "[parameters('TenantId')]",
+                        "objectId": "[parameters('Vault-ObjectId')]",
+                        "permissions": {
+                            "keys": "[parameters('Key-Valut-Permission-Keys')]",
+                            "secrets":"[parameters('Key-Valut-Permission-Secrets')]"
+                        }
+                    }
+                ]
+            },
+            "tags": {
+                "Department":"Dev"
             }
         }
     ]

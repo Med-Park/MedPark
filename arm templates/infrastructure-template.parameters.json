@@ -1,0 +1,38 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "MedPark-vNet-Name": {
+        "value": "medpark-vnet"
+      },
+      "MedPark-Key-Vault-Name": {
+        "value": "MedPark-Vault"
+      },
+      "Vault-ObjectId": {
+        "value": ""
+      },
+      "Key-Valut-Permission-Keys":{
+        "value": [
+          "Get",
+          "List",
+          "Update",
+          "Create",
+          "Delete",
+          "Recover",
+          "Backup",
+          "Restore"
+        ]
+      },
+      "Key-Valut-Permission-Secrets":{
+        "value": [
+          "Get",
+          "List",
+          "Set",
+          "Delete",
+          "Recover",
+          "Backup",
+          "Restore"
+        ]
+      }
+    }
+}

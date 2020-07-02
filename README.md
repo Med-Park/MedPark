@@ -3,7 +3,7 @@
 This is a reference application for building a distrbuted application using microservices built with ASP.net Core with various other tools and services. The list below 
 contains a summary ot tools and services used to build the solution.
 
-###Tools used include
+### Tools used include
 - [Domain Driven Design](http://dddcommunity.org) fundamentals
 - SQL and NoSQL databases ([SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-2017), [MongoDB](https://www.mongodb.com)
 - Distributed caching with [Redis](https://redis.io)
@@ -15,7 +15,7 @@ contains a summary ot tools and services used to build the solution.
 - Logging using [Serilog](https://serilog.net) and [Seq](https://getseq.net)
 - Manage Builds and Deployments with [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/)
 
-##MedPark
+### MedPark Contents
 Below is a list off all the services, libraries and serverless functions that make MedPark run.
 
 [API Service](https://github.com/Med-Park/MedPark.API.Gateway)
@@ -33,17 +33,21 @@ Below is a list off all the services, libraries and serverless functions that ma
 [Email Common Library](https://github.com/Med-Park/MedPark.Common.Email)
 [Azure Functions](https://github.com/Med-Park/MedPark.Serverless)
 
-###How to get started
+### How to get started
 To get started, you can clone this repo and then run the `/scripts/git-clone-all.ps1` Powershell script. This script will clone all the MedPark repositries listed above.
 
-###Run infrastructure
+### Run infrastructure
 To run MedPark, you first need to run all the foundational services that will be used by each of the services. The easiest and fast way to do this is by running a [Docker Compose](https://docs.docker.com/compose/) command:
 
-`docker-compose -f ./scripts/medpark-infra-compose.yml up`
+``` docker
+docker-compose -f ./scripts/medpark-infra-compose.yml up
+```
 
 Once we have the infrastructure up and running we can go ahead and run our services:
 
-`docker-compose -f ./srcipts/medpark-services-compose.myl up`
+``` docker
+docker-compose -f ./srcipts/medpark-services-compose.myl up
+```
 
 * Append the `--build` flag to the end of the command above if you are running the command for the first time.
 

@@ -40,13 +40,13 @@ To get started, you can clone this repo and then run the `/scripts/git-clone-all
 To run MedPark, you first need to run all the foundational services that will be used by each of the services. The easiest and fast way to do this is by running a [Docker Compose](https://docs.docker.com/compose/) command:
 
 ``` docker
-docker-compose -f ./scripts/medpark-infra-compose.yml up
+docker-compose -f ./scripts/medpark-infra-compose.yml up -d
 ```
 
 Once we have the infrastructure up and running we can go ahead and run our services:
 
 ``` docker
-docker-compose -f ./srcipts/medpark-services-compose.myl up
+docker-compose -f ./scripts/medpark-services-compose.yml up -d
 ```
 
 * Append the `--build` flag to the end of the command above if you are running the command for the first time.

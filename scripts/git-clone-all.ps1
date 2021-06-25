@@ -11,7 +11,7 @@ foreach($repo in $repos.repos){
 
     $repoPath = $repoPath.ToString() + "/" + $repo.Name
 
-    if(![System.IO.File]::Exists($repoPath)){
+    if([System.IO.File]::Exists($repoPath)){
         Write-Host
         Write-Host ========================================================
         Write-Host Respository ($repo.Name) already exists. Please pull to get latest changes
